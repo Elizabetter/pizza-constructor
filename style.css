@@ -1,0 +1,67 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.pizza {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 30px;
+    background-color: rosybrown;
+    grid-area: 1 / 1 / 4 / 4;
+}
+.products {
+    text-align: center;
+    vertical-align: center;
+    max-height: 300px;
+    margin: 30px;
+    background-color: lightgray;
+    grid-area: 4 / 1 / 7 / 4;
+}
+.bill {
+    text-align: center;
+    margin: 30px;
+    background-color: thistle;
+    grid-area: 1 / 4 / 7 / 6;
+}
+
+
+.choice {
+
+    margin: 7%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/*.div1 { grid-area: 1 / 1 / 2 / 2; }*/
+/*.div2 { grid-area: 1 / 2 / 2 / 3; }*/
+/*.div3 { grid-area: 1 / 3 / 2 / 4; }*/
+/*.div4 { grid-area: 2 / 1 / 3 / 2; }*/
+/*.div5 { grid-area: 2 / 2 / 3 / 3; }*/
+/*.div6 { grid-area: 2 / 3 / 3 / 4; }*/
+
+
+.choice img{
+    max-height: 50px;
+}
+
+.choice div  {
+    margin: 5px;
+   padding: 7px;
+    /*min-width: 220px;*/
+}
+
+img.pizza{
+    padding-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
