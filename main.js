@@ -1,69 +1,47 @@
-function count() {
-    let cost = document.getElementById("cost");
-    let plus_cost = document.getElementById("plusCost");
-    cost.innerHTML = +cost.innerHTML + +plus_cost.innerHTML;
-}
+toppings.forEach(topping => {
+   let pizzaTopping = document.createElement("div");
+   for(const k in topping) {
+       pizzaTopping.setAttribute(k, topping[k])
+   }
 
-toppings =
-[
-    {
-        name: "pepperoni",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "anchovy",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "basil",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "chili",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "mushroom",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "onion",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "mozzarella",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "tomato",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "sweetcorn",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "prawn",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "pepper",
-        cost : 1.80,
-        calories: 250
-    },
-    {
-        name: "olive",
-        cost : 1.80,
-        calories: 250
-    }
-];
+    let pizzaImg = document.createElement("img");
+    pizzaImg.setAttribute('src', topping["path"]);
+
+    let parent = document.getElementById('choice');
+    let filling = parent.append(pizzaTopping);
+    pizzaTopping.append(pizzaImg);
+
+
+
+    console.log(parent.childNodes);
+    //
+    filling.addEventListener('click', function (e){console.log(e.target)} )
+});
+
+
+
+
+//
+// console.log( toppings.find({ id: 1 }));
+//
+//
+//
+// function count(el) {
+//     // let cost = document.getElementById("cost");
+//     // let plus_cost = document.getElementById("plusCost");
+//     // cost.innerHTML = +cost.innerHTML + +plus_cost.innerHTML;
+//     // let id = get
+//     alert(el.id);
+//     let elementId = +el.id;
+//     console.log( toppings.find({ id: 1 }));
+//     console.log( toppings.find({ id: elementId }));
+// }
+
+
+
+
+
+// function f(el) {
+//     alert("hello");
+//     alert(el.id);
+// }
