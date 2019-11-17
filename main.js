@@ -1,47 +1,65 @@
-toppings.forEach(topping => {
-   let pizzaTopping = document.createElement("div");
-   for(const k in topping) {
-       pizzaTopping.setAttribute(k, topping[k])
-   }
+'use strict';
 
-    let pizzaImg = document.createElement("img");
-    pizzaImg.setAttribute('src', topping["path"]);
+(function() {
+    toppings.forEach(topping => {
+        let pizzaTopping = document.createElement("div");
+        for(const k in topping) {
+            pizzaTopping.setAttribute(`data-${k}`, topping[k])
+        }
 
-    let parent = document.getElementById('choice');
-    let filling = parent.append(pizzaTopping);
-    pizzaTopping.append(pizzaImg);
+        let pizzaImg = document.createElement("img");
+        pizzaImg.setAttribute('src', topping["path"]);
+        console.log(pizzaTopping);
+
+        let parent = document.getElementById('choice');
+        let filling = parent.append(pizzaTopping);
+        pizzaTopping.append(pizzaImg);
+    });
+
+    parent.addEventListener( 'click',function(event){
+        config.cost += +event.path[1].getAttribute('data-cost');
+        config.calories += +event.path[1].getAttribute('data-calories');
+        config.weight += +event.path[1].getAttribute('data-weight');
+
+            let pizza = document.getElementById('pizzaTopping');
+
+            let pizzaToppingView = document.createElement("img");
+            pizza.append(pizzaToppingView);
+
+            let productName = event.path[1].getAttribute('data-name');
+            let pathImg = `./assets/images/${productName}.svg`;
+            pizzaToppingView.setAttribute('src', pathImg);
+            pizzaToppingView.style.position = 'absolute';
+            pizzaToppingView.style.justifyContent = 'center';
+
+        for(const k in config){
+            let listField1 = document.getElementById('cost');
+            let listField2 = document.getElementById('calories');
+            let listField3 = document.getElementById('weight');
+            switch (k) {
+                case 'cost':
+                    listField1.innerText = config.cost.toFixed(2);
+                    break;
+                case 'calories':
+                    listField2.innerText = config.calories;
+                    break;
+                case 'weight':
+                    listField3.innerText = config.weight;
+                    break;
+            }
+        }
+    });
 
 
 
-    console.log(parent.childNodes);
-    //
-    filling.addEventListener('click', function (e){console.log(e.target)} )
-});
+    let config = {
+        cost : 4,
+        calories: 150,
+        weight: 300,
+        selectedTopping: 0
+    };
+}());
 
 
 
 
-//
-// console.log( toppings.find({ id: 1 }));
-//
-//
-//
-// function count(el) {
-//     // let cost = document.getElementById("cost");
-//     // let plus_cost = document.getElementById("plusCost");
-//     // cost.innerHTML = +cost.innerHTML + +plus_cost.innerHTML;
-//     // let id = get
-//     alert(el.id);
-//     let elementId = +el.id;
-//     console.log( toppings.find({ id: 1 }));
-//     console.log( toppings.find({ id: elementId }));
-// }
-
-
-
-
-
-// function f(el) {
-//     alert("hello");
-//     alert(el.id);
-// }

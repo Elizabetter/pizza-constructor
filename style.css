@@ -6,8 +6,12 @@
     grid-row-gap: 0px;
 }
 
-.pizza {
-    display: table-cell;
+#pizzaTopping{
+    display: flex;
+    justify-content: center;
+}
+
+#pizza {
     vertical-align: middle;
     text-align: center;
     margin: 30px;
@@ -22,11 +26,15 @@
     background-color: lightgray;
     grid-area: 4 / 1 / 7 / 4;
 }
-.bill {
-    text-align: center;
+#bill {
+
     margin: 30px;
     background-color: thistle;
     grid-area: 1 / 4 / 7 / 6;
+}
+
+.list{
+    margin: 8%;
 }
 
 
@@ -40,28 +48,18 @@
     grid-row-gap: 0px;
 }
 
-/*.div1 { grid-area: 1 / 1 / 2 / 2; }*/
-/*.div2 { grid-area: 1 / 2 / 2 / 3; }*/
-/*.div3 { grid-area: 1 / 3 / 2 / 4; }*/
-/*.div4 { grid-area: 2 / 1 / 3 / 2; }*/
-/*.div5 { grid-area: 2 / 2 / 3 / 3; }*/
-/*.div6 { grid-area: 2 / 3 / 3 / 4; }*/
 
-
-.choice img{
+#choice img{
     max-height: 50px;
 }
 
-.choice div  {
+#choice div  {
     margin: 5px;
    padding: 7px;
     /*min-width: 220px;*/
 }
 
 img.pizza{
-    padding-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
+    position: absolute;
 }
 
