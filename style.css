@@ -1,9 +1,13 @@
+body{
+    background-image: url("assets/images/pizza.jpg");
+    background-repeat: repeat;
+
+}
+
 .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
 }
 
 #pizzaTopping{
@@ -37,9 +41,7 @@
     margin: 8%;
 }
 
-
 #choice {
-
     margin: 7%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -47,7 +49,6 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
-
 
 #choice img{
     max-height: 50px;
@@ -63,3 +64,6 @@ img.pizza{
     position: absolute;
 }
 
+header{
+    text-align: center;
+}

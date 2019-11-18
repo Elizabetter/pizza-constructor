@@ -92,7 +92,7 @@ let toppings =
             id: 12,
             name: "olive",
             cost : 1.90,
-            calories: 250,
+            calories: 90,
             weight: 20,
             path: "assets/images/olive-one.svg"
         }

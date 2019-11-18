@@ -26,9 +26,18 @@
             let pizzaToppingView = document.createElement("img");
             pizza.append(pizzaToppingView);
 
+            let pathImg;
             let productName = event.path[1].getAttribute('data-name');
-            let pathImg = `./assets/images/${productName}.svg`;
-            pizzaToppingView.setAttribute('src', pathImg);
+
+            if(productName === null)  {
+                alert('выберите добавку еще раз');
+            }
+            else{
+                pathImg = `./assets/images/${productName}.svg`;
+                pizzaToppingView.setAttribute('src', pathImg)
+            }
+
+
             pizzaToppingView.style.position = 'absolute';
             pizzaToppingView.style.justifyContent = 'center';
 
