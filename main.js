@@ -3,13 +3,20 @@
 (function() {
     toppings.forEach(topping => {
         let pizzaTopping = document.createElement("div");
+
+
+
         for(const k in topping) {
             pizzaTopping.setAttribute(`data-${k}`, topping[k])
         }
 
         let pizzaImg = document.createElement("img");
         pizzaImg.setAttribute('src', topping["path"]);
-        console.log(pizzaTopping);
+
+        let price = document.createElement("div" );
+        price.innerHTML = topping["cost"] + " бел. руб";
+        pizzaTopping.append(price);
+
 
         let parent = document.getElementById('choice');
         let filling = parent.append(pizzaTopping);
@@ -25,6 +32,16 @@
 
             let pizzaToppingView = document.createElement("img");
             pizza.append(pizzaToppingView);
+
+
+        toppings.forEach(topping => {
+                let price = document.createElement("div" );
+                pizzaToppingView.append(price);
+                price.innerHTML = topping["cost"];
+                pizzaToppingView.append(price);
+                console.log(price);
+        });
+
 
             let pathImg;
             let productName = event.path[1].getAttribute('data-name');
@@ -59,7 +76,7 @@
         }
     });
 
-
+let topping = [];
 
     let config = {
         cost : 4,
