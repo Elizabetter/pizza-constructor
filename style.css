@@ -4,10 +4,13 @@ body{
 
 }
 
-.parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+#bill{
+    flex-grow: 3;
+    margin: 8%;
+}
+
+.result{
+    display: flex;
 }
 
 #pizzaTopping{
@@ -16,38 +19,25 @@ body{
 }
 
 #pizza {
-    vertical-align: middle;
-    text-align: center;
-    margin: 30px;
-    background-color: rosybrown;
-    grid-area: 1 / 1 / 4 / 4;
+
+    width: 400px;
+    flex-grow: 3;
 }
+
+#choice{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 .products {
-    text-align: center;
-    vertical-align: center;
-    max-height: 300px;
-    margin: 30px;
-    background-color: lightgray;
-    grid-area: 4 / 1 / 7 / 4;
-}
-#bill {
+    display: inline-block;
+    margin: 20px;
 
-    margin: 30px;
-    background-color: thistle;
-    grid-area: 1 / 4 / 7 / 6;
 }
 
-.list{
-    margin: 8%;
-}
-
-#choice {
-    margin: 7%;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+#choice div {
+    display: inline-block;
+    padding: 10px;
 }
 
 #choice img{
@@ -55,9 +45,7 @@ body{
 }
 
 #choice div  {
-    margin: 5px;
-   /*padding: 7px;*/
-
+    margin: 10px;
 }
 
 img.pizza{
@@ -66,4 +54,14 @@ img.pizza{
 
 header{
     text-align: center;
+}
+
+.pizza {
+    width: 40%;
+}
+
+
+.pizza-toppings {
+    position: absolute;
+    width: 40%;
 }

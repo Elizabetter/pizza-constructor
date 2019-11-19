@@ -1,4 +1,4 @@
-let toppings =
+const toppings =
     [
         {
             id: 1,
