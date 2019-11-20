@@ -43,7 +43,7 @@ const toppings =
         {
             id: 6,
             name: "onion",
-            cost : 0.75,
+            cost : 1,
             calories: 250,
             weight: 25,
             path: "assets/images/onion-one.svg"

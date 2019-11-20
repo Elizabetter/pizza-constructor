@@ -1,67 +1,66 @@
 body{
     background-image: url("assets/images/pizza.jpg");
-    background-repeat: repeat;
-
 }
 
 #bill{
-    flex-grow: 3;
-    margin: 8%;
+    height: 0%;
+    margin-top: 33%;
+    margin-bottom: 55px;
+    width: 50%;
 }
 
 .result{
     display: flex;
 }
 
-#pizzaTopping{
-    display: flex;
-    justify-content: center;
-}
-
 #pizza {
-
-    width: 400px;
-    flex-grow: 3;
+padding-left: 5%;
+    padding-top: 5%;
 }
 
 #choice{
-    padding-left: 10%;
-    padding-right: 10%;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 .products {
-    display: inline-block;
-    margin: 20px;
-
-}
-
-#choice div {
-    display: inline-block;
-    padding: 10px;
-}
-
-#choice img{
-    max-height: 50px;
+    min-width: 40%;
 }
 
 #choice div  {
-    margin: 10px;
+    margin: 8px;
 }
 
 img.pizza{
     position: absolute;
+    margin-left: 10%;
 }
 
 header{
+    background-color: #111e25;
     text-align: center;
+    height: 70px;
+}
+
+footer{
+    background-color: #111e25;
+    height:100px;
+    margin-top: -20px;
 }
 
 .pizza {
-    width: 40%;
+    width: 30%;
 }
-
 
 .pizza-toppings {
     position: absolute;
-    width: 40%;
+    width: 30%;
+    margin-left: 10%;
+}
+
+h1{
+color: white;
+    padding-top:1%;
+    font-family: 'Bebas Neue', cursive;
 }

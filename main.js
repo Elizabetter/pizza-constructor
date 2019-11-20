@@ -12,11 +12,10 @@
     toppings.forEach(topping => {
         let pizzaTopping = document.createElement("div");
 
-
         for (const k in topping) {
-            pizzaTopping.setAttribute(`data-${k}`, topping[k])
-            pizzaTopping.setAttribute(`type`, 'button')
-            pizzaTopping.setAttribute(`class`, "btn btn-dark")
+            pizzaTopping.setAttribute(`data-${k}`, topping[k]);
+            pizzaTopping.setAttribute(`type`, 'button');
+            pizzaTopping.setAttribute(`class`, "btn btn-dark");
         }
 
         let pizzaImg = document.createElement("img");
@@ -25,7 +24,6 @@
         let price = document.createElement("div");
         price.innerHTML = topping["cost"] + " бел. руб";
         pizzaTopping.append(price);
-
 
         let parent = document.getElementById('choice');
         parent.append(pizzaTopping);
@@ -67,10 +65,8 @@
 
     function createDomElements(event) {
         let pizza = document.getElementById('pizzaTopping');
-
         let pizzaToppingView = document.createElement("img");
         pizza.append(pizzaToppingView);
-
 
         toppings.forEach(topping => {
             let price = document.createElement("div");
@@ -78,7 +74,6 @@
             price.innerHTML = topping["cost"];
             pizzaToppingView.append(price);
         });
-
 
         let pathImg;
         let productName = event.path[1].getAttribute('data-name');
@@ -90,11 +85,6 @@
             pizzaToppingView.setAttribute('src', pathImg);
             pizzaToppingView.setAttribute('class', 'pizza-toppings')
         }
-
-
-        // pizzaToppingView.style.position = 'absolute';
-        // pizzaToppingView.style.position = 'absolute';
-        // pizzaToppingView.style.justifyContent = 'center';
 
         for (const k in config) {
             let listField1 = document.getElementById('cost');
