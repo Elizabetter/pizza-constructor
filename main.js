@@ -9,27 +9,6 @@
         topping: []
     };
 
-    toppings.forEach(topping => {
-        let pizzaTopping = document.createElement("div");
-
-        for (const k in topping) {
-            pizzaTopping.setAttribute(`data-${k}`, topping[k]);
-            pizzaTopping.setAttribute(`type`, 'button');
-            pizzaTopping.setAttribute(`class`, "btn btn-dark");
-        }
-
-        let pizzaImg = document.createElement("img");
-        pizzaImg.setAttribute('src', topping["path"]);
-
-        let price = document.createElement("div");
-        price.innerHTML = topping["cost"] + " бел. руб";
-        pizzaTopping.append(price);
-
-        let parent = document.getElementById('choice');
-        parent.append(pizzaTopping);
-        pizzaTopping.append(pizzaImg);
-    });
-
     function processConfig(cost, calories, weight, id, operation) {
         const costAttr = +event.path[1].getAttribute(cost);
         const caloriesAttr = +event.path[1].getAttribute(calories);
@@ -52,6 +31,29 @@
         }
     }
 
+    toppings.forEach(topping => {
+        let pizzaTopping = document.createElement("div");
+
+        for (const k in topping) {
+            pizzaTopping.setAttribute(`data-${k}`, topping[k]);
+            pizzaTopping.setAttribute(`type`, 'button');
+            pizzaTopping.setAttribute(`class`, "btn btn-dark");
+        }
+
+        let pizzaImg = document.createElement("img");
+        pizzaImg.setAttribute('src', topping["path"]);
+
+        let price = document.createElement("div");
+        price.innerHTML = topping["cost"] + " бел. руб";
+        pizzaTopping.append(price);
+
+        let parent = document.getElementById('choice');
+        parent.append(pizzaTopping);
+        pizzaTopping.append(pizzaImg);
+    });
+
+
+
     function processToppings(event) {
         if (config.topping.length && !config.topping.includes(event.path[1].getAttribute('data-id'))) {
             processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'plus');
@@ -68,23 +70,23 @@
         let pizzaToppingView = document.createElement("img");
         pizza.append(pizzaToppingView);
 
+
+        let productName = event.path[1].getAttribute('data-name');
+
+        if (productName === null) {
+            return
+        } else {
+            let pathImg = `./assets/images/${productName}.svg`;
+            pizzaToppingView.setAttribute('src', pathImg);
+            pizzaToppingView.setAttribute('class', 'pizza-toppings')
+        }
+
         toppings.forEach(topping => {
             let price = document.createElement("div");
             pizzaToppingView.append(price);
             price.innerHTML = topping["cost"];
             pizzaToppingView.append(price);
         });
-
-        let pathImg;
-        let productName = event.path[1].getAttribute('data-name');
-
-        if (productName === null) {
-            return
-        } else {
-            pathImg = `./assets/images/${productName}.svg`;
-            pizzaToppingView.setAttribute('src', pathImg);
-            pizzaToppingView.setAttribute('class', 'pizza-toppings')
-        }
 
         for (const k in config) {
             let listField1 = document.getElementById('cost');
