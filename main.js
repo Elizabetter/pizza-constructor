@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+    let pizza = document.getElementById('pizzaTopping');
+
     const config = {
         cost: 4,
         calories: 150,
@@ -9,18 +11,44 @@
         topping: []
     };
 
-    function processConfig(cost, calories, weight, id, operation) {
-        const costAttr = +event.path[1].getAttribute(cost);
-        const caloriesAttr = +event.path[1].getAttribute(calories);
-        const weightAttr = +event.path[1].getAttribute(weight);
-        const idAttr = event.path[1].getAttribute(id);
+    function processConfig(cost, calories, weight, id, operation, e) {
+        let pizzaToppingView = document.createElement("img");
+        pizza.append(pizzaToppingView);
+
+        const costAttr = +e.path[1].getAttribute(cost);
+        const caloriesAttr = +e.path[1].getAttribute(calories);
+        const weightAttr = +e.path[1].getAttribute(weight);
+        const idAttr = e.path[1].getAttribute(id);
         if (operation === 'plus') {
+
+            let productName = e.path[1].getAttribute('data-name');
+            let productId = e.path[1].getAttribute('data-id');
+
+            let pathImg = `./assets/images/${productName}.svg`;
+            pizzaToppingView.setAttribute('src', pathImg);
+            pizzaToppingView.setAttribute('class', 'pizza-toppings');
+            pizzaToppingView.setAttribute('data-id', productId);
+
             config.cost += costAttr;
             config.calories += caloriesAttr;
             config.weight += weightAttr;
             config.topping.push(idAttr);
+
+            toppings.forEach(topping => {
+                let price = document.createElement("div");
+                pizzaToppingView.append(price);
+                price.innerHTML = topping["cost"];
+                pizzaToppingView.append(price);
+            });
         }
         if (operation === 'minus') {
+            if (config.topping.includes(idAttr)) {
+                for (const i in pizza.children) {
+                    if (pizza.children[i].attributes && idAttr === pizza.children[i].getAttribute('data-id')) {
+                        pizza.removeChild(pizza.children[i])
+                    }
+                }
+            }
             config.cost -= costAttr;
             config.calories -= caloriesAttr;
             config.weight -= weightAttr;
@@ -56,37 +84,24 @@
 
     function processToppings(event) {
         if (config.topping.length && !config.topping.includes(event.path[1].getAttribute('data-id'))) {
-            processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'plus');
+            processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'plus', event);
         } else if (config.topping.includes(event.path[1].getAttribute('data-id'))) {
-            processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'minus');
+            processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'minus', event);
         }
         else if (!config.topping.length) {
-            processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'plus')
+            processConfig('data-cost', 'data-calories', 'data-weight', 'data-id', 'plus', event)
         }
     }
 
     function createDomElements(event) {
-        let pizza = document.getElementById('pizzaTopping');
-        let pizzaToppingView = document.createElement("img");
-        pizza.append(pizzaToppingView);
-
-
         let productName = event.path[1].getAttribute('data-name');
 
         if (productName === null) {
             return
         } else {
-            let pathImg = `./assets/images/${productName}.svg`;
-            pizzaToppingView.setAttribute('src', pathImg);
-            pizzaToppingView.setAttribute('class', 'pizza-toppings')
-        }
+            processToppings(event)
 
-        toppings.forEach(topping => {
-            let price = document.createElement("div");
-            pizzaToppingView.append(price);
-            price.innerHTML = topping["cost"];
-            pizzaToppingView.append(price);
-        });
+        }
 
         for (const k in config) {
             let listField1 = document.getElementById('cost');
@@ -107,11 +122,6 @@
     }
 
     parent.addEventListener('click', function (event) {
-        processToppings(event);
         createDomElements(event);
     });
 }());
-
-
-
-
